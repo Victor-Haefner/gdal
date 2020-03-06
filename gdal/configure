@@ -992,6 +992,8 @@ enable_rpath
 with_libiconv_prefix
 with_bash_completion
 with_proj
+with_proj_include
+with_proj_lib
 with_proj_extra_lib_for_test
 with_liblzma
 with_zstd
@@ -24036,6 +24038,17 @@ if test "${with_proj_extra_lib_for_test+set}" = set; then :
 fi
 
 
+
+# Check whether proj include and lib were given.
+if test "${with_proj_include+set}" = set; then :
+  PROJ_FOUND=yes;
+  PROJ_INCLUDE=$with_proj_include;
+  LIBS="$with_proj_lib $LIBS";
+else
+# below the old crap ..
+
+
+
 PROJ_INCLUDE=""
 if test "x$with_proj" = "xno" ; then
 
@@ -24603,7 +24616,7 @@ $as_echo "$as_me: proj.h found" >&6;}
     fi
   fi
 fi
-
+fi # new check if lib and include were given
 
 
 
