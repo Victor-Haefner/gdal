@@ -988,6 +988,8 @@ with_rename_internal_shapelib_symbols
 with_local
 with_threads
 with_libz
+with_libz_lib
+with_libz_include
 enable_rpath
 with_libiconv_prefix
 with_bash_completion
@@ -22692,6 +22694,13 @@ if test "${with_libz+set}" = set; then :
   withval=$with_libz;
 fi
 
+# Check whether libz include and lib were given.
+if test "${with_libz_include+set}" = set; then :
+  LIBZ_SETTING=no
+  EXTRA_INCLUDES="$with_libz_include $EXTRA_INCLUDES"
+  LIBS="$with_libz_lib -lz $LIBS"
+else
+# below the old crap ..
 
 if test "$with_libz" = "external" -o "$with_libz" = "" -o "$with_libz" = "yes" ; then
 
@@ -22913,6 +22922,7 @@ $as_echo "using internal libz code." >&6; }
 fi
 
 LIBZ_SETTING=$LIBZ_SETTING
+fi # new check if lib and include were given
 
 
 
